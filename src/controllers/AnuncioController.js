@@ -2,7 +2,7 @@ const {Anuncio} = require('../models');
 
 module.exports = {
   async index (req, res) {
-    res.send('Index OK');
+    res.send('Index OK' + req.user);
   },
 
   async post (req, res) {
@@ -12,7 +12,7 @@ module.exports = {
   },
 
   async primeiro (req, res) {
-    res.send('primeiro');
+    res.send('primeiro ' + req.user.email);
   },
 
   async segundo (req, res) {

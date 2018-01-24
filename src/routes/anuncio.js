@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-
 const AnuncioController = require('../controllers/AnuncioController');
+const isAutenticado = require('../filters/UsuarioAuatenticadoFilter');
 
-router.get('/', AnuncioController.index);
-router.post('/cadastrar', AnuncioController.post);
+router.get('/', isAutenticado, AnuncioController.index);
+router.post('/cadastrar', isAutenticado, AnuncioController.post);
 
-router.get('/primeiro', AnuncioController.primeiro);
-router.get('/segundo', AnuncioController.segundo);
+router.get('/primeiro', isAutenticado, AnuncioController.primeiro);
+router.get('/segundo', isAutenticado, AnuncioController.segundo);
 
 module.exports = router;

@@ -28,7 +28,7 @@ module.exports = {
 
   async login (req, res) {
     try {
-      const {email, password} = req.body;
+      const {email, senha} = req.body;
       const user = await Usuario.findOne({
         where: {
           email: email
@@ -41,7 +41,7 @@ module.exports = {
         });
       }
 
-      const isPasswordValid = await user.comparaSenha(password);
+      const isPasswordValid = await user.comparaSenha(senha);
       if (!isPasswordValid) {
         return res.status(403).send({
           error: 'Erro ao logar'
